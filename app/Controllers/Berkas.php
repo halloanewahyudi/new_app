@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Controllers;
-
 use App\Controllers\BaseController;
 use App\Models\BerkasModel;
-
 class Berkas extends BaseController
 {
     public function __construct()
@@ -13,39 +10,35 @@ class Berkas extends BaseController
         $this->berkas_model = new BerkasModel();
         helper('form', 'auth', 'file');
     }
-
     public function index()
     {
         //
     }
-
     public function create()
     {
         $berkas_model = $this->berkas_model->where('user_id', user_id())->first();
         $user_id =  user_id();
-        if ($berkas_model['user_id'] == $user_id) {
-            $action = base_url('santri/create-berkas-action');
-        } else {
-            $berkas_id = $berkas_model['id'];
-            $action = base_url('santri/edit-berkas-action/' . $berkas_id);
-        }
         $d = [
             'judul' => ' Berkas',
-            'action' => $action,
-            'nama_berkas' => 'Uang Pendaftaran',
-            'kode_berkas' => 'BP',
+            'action' => base_url('santri/create-berkas-action'),
+            'db' => $this->db,
             'data_berkas' => $berkas_model,
             'required' => 'required',
+            'data_photo'=> $this->status_berkas(1),
+            'data_kesanggupan'=> $this->status_berkas(2),
+            'data_rapor_1'=> $this->status_berkas(3),
+            'data_rapor_2'=> $this->status_berkas(4),
+            'data_akte'=> $this->status_berkas(5),
+            'data_kk'=> $this->status_berkas(6),
+            'data_hafalan'=> $this->status_berkas(7),
+            'data_kesehatan'=> $this->status_berkas(8),
         ];
-
         return view('berkas/form-berkas', $d);
     }
-
     public function create_action()
     {
         $dataBerkas = $this->request->getFile('file');
         $fileName = $dataBerkas->getRandomName();
-
         $data = [
             'judul_berkas' => $this->request->getVar('judul_berkas'),
             'deskripsi'     => $this->request->getVar('deskripsi'),
@@ -53,17 +46,15 @@ class Berkas extends BaseController
             'file' => $fileName,
             'user_id' => user_id(),
         ];
-        $this->model->insert($data);
+        $this->berkas_model->insert($data);
         if ($dataBerkas->isValid() && !$dataBerkas->hasMoved()) {
             $dataBerkas->move('berkas/', $fileName);
         }
     }
-
     public function edit($id)
     {
         //
     }
-
     public function edit_action($id)
     {
         $berkas_model = $this->berkas_model->where('user_id', user_id())->first();
@@ -86,4 +77,10 @@ class Berkas extends BaseController
             $dataBerkas->move('bukti_berkas/', $fileName);
         }
     }
+
+    function status_berkas($status){
+        $berkas_model = $this->berkas_model->where(['user_id'=> user_id(),'status',$status])->first();
+        return $berkas_model;
+    }
+    
 }

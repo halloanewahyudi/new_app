@@ -219,7 +219,7 @@
                     }else{
                         $disabled ='disabled';
                     }?>
-                    <a href="<?= base_url('upload-berkas') ?>" class="btn-warning btn btn-sm  <?= $disabled ?>">Uplad Berkas</a>
+                    <a href="<?= base_url('santri/create-berkas') ?>" class="btn-warning btn btn-sm  <?= $disabled ?>">Uplad Berkas</a>
                 </div>
                 <div class="card-body">
                     <table>
