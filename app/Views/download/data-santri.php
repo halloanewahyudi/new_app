@@ -10,12 +10,14 @@
 
 <body>
    
-    <div style="max-width:960px; margin:0 auto; padding:30px;">
-    <h1 style="text-align:center"> Bukti Pendaftaran </h1>
+    <div style="max-width:100%; margin:0 auto;">
+    <h1 style="text-align:center"> Data Santri </h1>
     <hr>
      <!-- content -->
-  
-        <h2>A. Data Pribadi</h2>
+
+     <div> <!-- sisi kiri -->
+    
+        <h4>A. Data Pribadi</h4>
         <table>
             <tr><td>Nama</td><td>:</td><td><?= user()->full_name; ?></td></tr>
             <tr><td>No Pendaftaran</td><td>:</td><td><?= user()->registration_number; ?></td>
@@ -28,7 +30,7 @@
             <tr><td>Status Tinggal</td><td>:</td><td><?= $data_santri['status_tinggal']; ?></td></tr>
             <tr><td>pembiayaan</td><td>:</td><td><?= $data_santri['pembiayaan']; ?></td></tr>
             <tr><td>Alamat</td><td>:</td><td><?= $data_santri['san_alamat']; ?></td></tr>
-            <tr><td>Desa/ Kelurahan</td><td>:</td><td><?= $data_santri['san_desa_kelurahan']; ?></td></tr>
+            <tr><td>Desa/ Kelurahan</td><td>:</td><td><?= $data_santri['san_desa_kel']; ?></td></tr>
             <tr><td>Kecamatan</td><td>:</td><td><?= $data_santri['san_kecamatan']; ?></td></tr>
             <tr><td>Kabupaten</td><td>:</td><td><?= $data_santri['san_kab']; ?></td></tr>
             <tr><td>Provinsi</td><td>:</td><td><?= $data_santri['san_provinsi']; ?></td></tr>
@@ -41,33 +43,32 @@
             <tr><td>NIK</td><td>:</td><td><?= $data_santri['nik']; ?></td></tr>
         </table>
 
-        <h2>B.Sekolah Asal</h2>
+        <h4>B.Sekolah Asal</h4>
         <table>
             <tr><td>Sekolah</td><td>:</td><td><?= $data_santri['sekolah_asal'] ?></td></tr>
             <tr><td>NPSN</td><td>:</td><td><?= $data_santri['npsn'] ?></td></tr>
             <tr><td>Tahun Lulus</td><td>:</td><td><?= $data_santri['tahun_lulus'] ?></td></tr>
-            <tr><td>Alamat Sekolah</td><td>:</td><td><?= $data_santri['alamat'] ?></td></tr>
-            <tr><td>Desa/ Kelurahan</td><td>:</td><td><?= $data_santri['desa_kelurahan']; ?></td></tr>
-            <tr><td>Kecamatan</td><td>:</td><td><?= $data_santri['kecamatan']; ?></td></tr>
-            <tr><td>Provinsi</td><td>:</td><td><?= $data_santri['provinsi']; ?></td></tr>
-            <tr><td>Negara</td><td>:</td><td><?= $data_santri['negara']; ?></td></tr>
-            <tr><td>Kode Pos</td><td>:</td><td><?= $data_santri['kode_pos']; ?></td></tr>
+            <tr><td>Alamat</td><td>:</td><td><?= $data_santri['sa_alamat']; ?></td></tr>
+            <tr><td>Desa/ Kelurahan</td><td>:</td><td><?= $data_santri['sa_desa_kel']; ?></td></tr>
+            <tr><td>Kecamatan</td><td>:</td><td><?= $data_santri['sa_kecamatan']; ?></td></tr>
+            <tr><td>Kabupaten</td><td>:</td><td><?= $data_santri['sa_kab']; ?></td></tr>
+            <tr><td>Provinsi</td><td>:</td><td><?= $data_santri['sa_provinsi']; ?></td></tr>
+            <tr><td>Negara</td><td>:</td><td><?= $data_santri['sa_negara']; ?></td></tr>
+            <tr><td>Kode Pos</td><td>:</td><td><?= $data_santri['sa_kode_pos']; ?></td></tr>
         </table>
-        
-             <!-- sisi kanan -->
-    
-        <h2>C.Jenjang Tujuan</h2>
+        </div>
+            
+        <div> <!-- sisi kanan -->
+        <h4>C.Jenjang Tujuan</h4>
         <table>
-            <tr><td>Jenjang</td><td>:</td><td><?= user()->educational_level; ?></td></tr>
-            <?php if(isset($data_tujuan)){
-                $kelas = $data_tujuan['kelas'];
-            }else{
-                $kelas = '';
-            } ?>
-            <tr><td>Kelas</td><td>:</td><td><?= $kelas?></td>
+           <tr>
+               <td>Pilihan Jenjang</td>
+               <td>:</td>
+               <td><?= user()->educational_level; ?></td>
+         </tr>
         </table>
 
-        <h2>D.Data Ayah</h2>
+        <h4>D.Data Ayah</h4>
         <table>
             <tr><td>Nama</td><td>:</td><td><?= $data_ayah['nama'] ?></td></tr>
             <tr><td>Tempat Lahir</td><td>:</td><td><?= $data_ayah['tempat_lahir'] ?></td></tr>
@@ -81,7 +82,7 @@
             <tr><td>NIK</td><td>:</td><td><?= $data_ayah['nik'] ?></td></tr>
         </table>
 
-        <h2>E.Data Ibu</h2>
+        <h4>E.Data Ibu</h4>
         <table>
         <tr><td>Nama</td><td>:</td><td><?= $data_ibu['nama'] ?></td></tr>
             <tr><td>Tempat Lahir</td><td>:</td><td><?= $data_ibu['tempat_lahir'] ?></td></tr>
@@ -95,16 +96,13 @@
             <tr><td>NIK</td><td>:</td><td><?= $data_ibu['nik'] ?></td></tr>
         </table>
 
-        <h2>E.Data Lain</h2>
+        <h4>E.Data Lain</h4>
         <table>
-        <?php if(isset($data_tujuan)){
-                $biaya = $data_tujuan['pembiayaan'];
-            }else{
-                $biaya = '';
-            } ?>
-        <tr><td>Penanggung Jawab Biaya</td><td>:</td><td><?= $biaya?></td></tr>
+        <tr><td>Status Tempat Tinggal</td><td>:</td><td><?= $data_santri['status_tinggal']?></td></tr>
+        <tr><td>Penanggung Jawab Biaya</td><td>:</td><td><?= $data_santri['pembiayaan']?></td></tr>
         </table>
-    </div>
+        </div>
+
 </body>
 
 </html>

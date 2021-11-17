@@ -48,7 +48,7 @@ class Download extends BaseController
     public function data_santri_view(){
         $model = $this->santri_model
         ->select('*')
-        ->select('santri.alamat as san_alamat, santri.desa_kelurahan as san_desa_kel, santri.kecamatan as san_kecamatan, santri.kabupaten_kota as san_kab, santri.provinsi as san_provinsi, santri.negara as san_negara, santri.kode_pos as san_kode_pos')
+        ->select('santri.alamat as san_alamat, santri.desa_kelurahan as san_desa_kel, santri.kecamatan as san_kecamatan, santri.kabupaten_kota as san_kab, santri.provinsi as san_provinsi, santri.negara as san_negara, santri.kode_pos as san_kode_pos, sekolah_asal.alamat as sa_alamat, sekolah_asal.desa_kelurahan as sa_desa_kel, sekolah_asal.kecamatan as sa_kecamatan, sekolah_asal.kabupaten_kota as sa_kab, sekolah_asal.provinsi as sa_provinsi, sekolah_asal.negara as sa_negara, sekolah_asal.kode_pos as sa_kode_pos')
         ->where('santri.user_id',user_id())
         ->join('sekolah_asal ', 'sekolah_asal.user_id = santri.user_id')
         ->join('wali_murid', 'wali_murid.id = santri.user_id')
@@ -63,11 +63,20 @@ class Download extends BaseController
         return view('download/data-santri',$d);
     }
     public function data_santri(){
-        $model = $this->santri_model->where('user_id',user_id())->first();
-        $d=[
-          'tahun_ajaran'=>'2021/2022',
-          'data_santri'=>$model,
-        ];
+      $model = $this->santri_model
+      ->select('*')
+      ->select('santri.alamat as san_alamat, santri.desa_kelurahan as san_desa_kel, santri.kecamatan as san_kecamatan, santri.kabupaten_kota as san_kab, santri.provinsi as san_provinsi, santri.negara as san_negara, santri.kode_pos as san_kode_pos, sekolah_asal.alamat as sa_alamat, sekolah_asal.desa_kelurahan as sa_desa_kel, sekolah_asal.kecamatan as sa_kecamatan, sekolah_asal.kabupaten_kota as sa_kab, sekolah_asal.provinsi as sa_provinsi, sekolah_asal.negara as sa_negara, sekolah_asal.kode_pos as sa_kode_pos')
+      ->where('santri.user_id',user_id())
+      ->join('sekolah_asal ', 'sekolah_asal.user_id = santri.user_id')
+      ->join('wali_murid', 'wali_murid.id = santri.user_id')
+      ->first();
+      $d=[
+        'tahun_ajaran'=>'2021/2022',
+        'data_santri'=>$model,
+        'data_ayah'=> $this->wali_murid('Ayah'),
+        'data_ibu'=> $this->wali_murid('Ibu'),
+        'data_wali_murid'=> $this->wali_murid('WaliMurid'),
+      ];
         $dompdf = new \Dompdf\Dompdf(); 
         $dompdf->loadHtml(view('download/data-santri',$d));
         $dompdf->setPaper('A4', 'potrait');
