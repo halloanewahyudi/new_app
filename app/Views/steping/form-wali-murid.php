@@ -2,7 +2,7 @@
 <?= $this->Section('content'); ?>
 <div id="formSekolahAsal" class="py-3">
     <div class="col-lg-6">
-        <form id="form" action="<?= $action ?>" accept-charset="utf-8" data-validate>
+        <form id="formWaliMurid" class="" action="<?= $action ?>" accept-charset="utf-8" data-validate>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -203,9 +203,6 @@
     </div>
 </div>
 <script>
-
-
-
 
 </script>
 <?= $this->endSection(); ?>
