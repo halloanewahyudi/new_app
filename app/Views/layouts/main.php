@@ -13,6 +13,7 @@
     <script src="<?= base_url(); ?>/assets/js/bouncer.polyfills.min.js"></script>
     <script src="<?= base_url(); ?>/assets/js/jquery-3.6.0.min.js"></script>
     <script src="<?= base_url(); ?>/assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/axios.min.js"></script>
 <body class="bg-light">
 <?= $this->include('layouts/header'); ?>
 <div class="container-fluid">

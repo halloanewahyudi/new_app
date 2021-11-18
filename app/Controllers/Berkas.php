@@ -8,7 +8,7 @@ class Berkas extends BaseController
     {
         $this->db = \Config\Database::connect();
         $this->berkas_model = new BerkasModel();
-        helper('form', 'auth', 'file');
+        helper('form', 'auth', 'file','url');
     }
     public function index()
     {
@@ -17,7 +17,6 @@ class Berkas extends BaseController
     public function create()
     {
         $berkas_model = $this->berkas_model->where('user_id', user_id())->first();
-        $user_id =  user_id();
         $d = [
             'judul' => ' Berkas',
             'action' => base_url('santri/create-berkas-action'),
@@ -50,6 +49,7 @@ class Berkas extends BaseController
         if ($dataBerkas->isValid() && !$dataBerkas->hasMoved()) {
             $dataBerkas->move('berkas/', $fileName);
         }
+        return redirect()->to('santri/create-berkas');
     }
     public function edit($id)
     {
@@ -69,7 +69,7 @@ class Berkas extends BaseController
             'judul_berkas' => $this->request->getVar('judul_berkas'),
             'deskripsi'     => $this->request->getVar('deskripsi'),
             'status' =>  $this->request->getVar('status'),
-            'file' => $bukti,
+            'file' => $fileName,
             'user_id' => user_id(),
         ];
         $this->berkas_model->update($id, $data);
@@ -79,7 +79,7 @@ class Berkas extends BaseController
     }
 
     function status_berkas($status){
-        $berkas_model = $this->berkas_model->where(['user_id'=> user_id(),'status',$status])->first();
+        $berkas_model = $this->berkas_model->where(['user_id'=> user_id(),'status'=> $status])->first();
         return $berkas_model;
     }
     

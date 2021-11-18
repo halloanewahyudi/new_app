@@ -26,7 +26,7 @@ class Pembayaran extends BaseController
     public function create(){
            $pembayaran_model = $this->pembayaran_model->where('user_id',user_id())->first();
            $user_id =  user_id();
-           if($pembayaran_model['user_id'] == $user_id){
+           if(empty($pembayaran_model['user_id'])){
             $action = base_url('santri/create-pembayaran-action');
            }else{
             $pembayaran_id = $pembayaran_model['id'];
