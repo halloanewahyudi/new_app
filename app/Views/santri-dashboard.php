@@ -244,7 +244,7 @@
                         <tr>
                             <td>Rapor Smester 1</td>
                             <td>:</td>
-                            <?php if (!empty($data_rapor_semeter_1->file)) : ?>
+                            <?php if (!empty($data_rapor_semester_1->file)) : ?>
                                 <td><span data-feather="check"></span></td>
                             <?php else : ?>
                                 <td><span>Belum terupload</span></td>
@@ -253,7 +253,7 @@
                         <tr>
                             <td>Rapor Smester 2</td>
                             <td>:</td>
-                            <?php if (!empty($data_rapor_semeter_2->file)) : ?>
+                            <?php if (!empty($data_rapor_semester_2->file)) : ?>
                                 <td><span data-feather="check"></span></td>
                             <?php else : ?>
                                 <td><span>Belum terupload</span></td>

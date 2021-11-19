@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group  mb-3">
                     <label for="bukti" class="form-label">Upload file</label> <br>
-                    <input type="file" class="form-control" accept="image/*" @change="previewImage" name="bukti" class="form-control-file" id="my-file " value=" <?= !empty($data_pembayaran['bukti']) ? $data_pembayaran['bukti'] : '' ?>" <?= $required ?>>
+                    <input type="file" class="form-control" accept="image/*"  name="bukti" class="form-control-file" id="my-file " value=" <?= !empty($data_pembayaran['bukti']) ? $data_pembayaran['bukti'] : '' ?>" <?= $required ?>>
                 </div>
 
                 <div class="form-group mt-3">

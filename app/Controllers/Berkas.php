@@ -58,28 +58,50 @@ class Berkas extends BaseController
     public function edit_action($id)
     {
         $berkas_model = $this->berkas_model->where('user_id', user_id())->first();
-        $dataBerkas = $this->request->getFile('bukti');
+        $dataBerkas = $this->request->getFile('file');
+        $dataDescription = $this->request->getVar('deskripsi');
         $fileName = $dataBerkas->getRandomName();
-        if ($dataBerkas == '') {
-            $bukti =  $berkas_model['bukti'];
+         if ($dataBerkas == '') {
+            $bukti =  $berkas_model['file'];
         } else {
             $bukti =  $fileName;
+        } 
+        if($dataDescription == ''){
+            $caption =  $berkas_model['deskripsi'];
+        }else{
+            $caption = $dataDescription;
         }
         $data = [
             'judul_berkas' => $this->request->getVar('judul_berkas'),
-            'deskripsi'     => $this->request->getVar('deskripsi'),
+            'deskripsi'     => $caption,
             'status' =>  $this->request->getVar('status'),
-            'file' => $fileName,
+            'file' => $bukti,
             'user_id' => user_id(),
         ];
         $this->berkas_model->update($id, $data);
-        if ($dataBerkas->isValid() && !$dataBerkas->hasMoved()) {
-            $dataBerkas->move('bukti_berkas/', $fileName);
+        if ( $dataBerkas->isValid() && ! $dataBerkas->hasMoved()) {
+            $dataBerkas->move('berkas/', $fileName);
         }
+        return redirect()->to('santri/create-berkas');
+    }
+
+    public function delete($id){
+      $image =  $this->berkas_model->where('id',$id)->get()->getRowObject();
+     $this->berkas_model->delete($id);
+     if(isset($image)){
+        $file = $image->file;
+        $path = base_url('/berkas/'.$file);
+        delete_files($path, true);
+        chmod($path, 0777);
+        unlink($path);
+     }
+    
+  
+     return redirect()->to('santri/create-berkas');  
     }
 
     function status_berkas($status){
-        $berkas_model = $this->berkas_model->where(['user_id'=> user_id(),'status'=> $status])->first();
+        $berkas_model = $this->berkas_model->where(['user_id'=> user_id(),'status'=> $status])->get()->getRowObject();
         return $berkas_model;
     }
     

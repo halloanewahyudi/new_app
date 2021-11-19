@@ -121,6 +121,7 @@ $routes->get('santri/create-berkas','Berkas::create');
 $routes->add('santri/create-berkas-action','Berkas::create_action');
 $routes->get('santri/edit-berkas/(:any)','Berkas::edit/$1');
 $routes->add('santri/edit-berkas-action/(:any)','Berkas::edit_action/$1');
+$routes->get('santri/delete-berkas/(:any)','Berkas::delete/$1');
 
 // Response
 $routes->get('konfirmasi/(:any)','Response::konfirmasi/$1');
