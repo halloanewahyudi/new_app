@@ -323,7 +323,7 @@ class Steping extends BaseController
             'kode_pos'     => $this->request->getVar('kode_pos'),
         ];
         $res = '<h4>Data Ibu telah di update! </h4> <a href="'.base_url('steping/back-ibu'.$id).'" class="btn btn-info btn-sm">Kembali</a> <a href="'.base_url('santri/dashboard ').'" class="btn btn-success btn-sm">Selesai</a><br> Atau jika ada wali murid<br> <a href="'.base_url('steping/wali-murid').'" class="btn btn-primary btn-sm">Selanjutnya</a>';
-        $this->wali_murid_model->update($id,$res);
+        $this->wali_murid_model->update($id,$data);
         session()->setFlashdata('message', $res);
         return  redirect()->to('response');
     }
