@@ -74,7 +74,9 @@ $routes->add('steping/wali-murid-action', 'Steping::wali_murid_action');
 $routes->get('steping/back-wali-murid/(:any)', 'Steping::back_wali_murid/$1');
 $routes->add('steping/back-wali-murid-action/(:any)', 'Steping::back_wali_murid_action/$1');
 
-
+// USersantri
+$routes->get('santri/edit-santri-user/(:any)', 'SantriUser::edit/$1');
+$routes->add('santri/edit-santri-user-action/(:any)', 'SantriUser::edit_action/$1');
 // santri
 $routes->get('santri/view-santri/(:any)', 'Santri::view/$1');
 $routes->get('santri/create-santri', 'Santri::create');

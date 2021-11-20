@@ -50,7 +50,7 @@ $wali_murid = $gdb->table('wali_murid')
         </a>
         <div class="collapse bg-light border-right border" id="profileItem">
                  
-        <a class="nav-link" href="<?= base_url('santri/edit-user/' . user_id()) ?>">
+        <a class="nav-link" href="<?= base_url('santri/edit-santri-user/' . user_id()) ?>">
               Edit User
             </a>
 

@@ -58,7 +58,7 @@ class Santri extends BaseController
             'user_id'   => user_id(),
         ]);
         session()->setFlashdata('message', 'Data Santri telah di input');
-        return  redirect()->to('santri/create-santri');
+        return  redirect()->to('santri/dashboard');
 
     }
 
@@ -101,7 +101,7 @@ class Santri extends BaseController
         ]);
 
         session()->setFlashdata('message','Data Santri Berhasil di Update');
-        return  redirect()->to('santri/edit-santri/'.$id);
+        return  redirect()->to('santri/dashboard');
 
     }
 }

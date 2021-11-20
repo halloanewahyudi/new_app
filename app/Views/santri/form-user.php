@@ -3,7 +3,7 @@
 <div id="myUser" class="pb-5">
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-4">
             <?php
             if (session()->getFlashdata('message')) {
             ?>
@@ -24,20 +24,9 @@
                     <input type="text" name="full_name" value="<?= !empty($data_user['full_name']) ? $data_user['full_name'] : '' ?>" class="form-control" />
                 </div>
 
-                <div id="dp">
-            <vuejs-datepicker :language="id" name="date_of_birth" input-class="form-control" placeholder="<?= $data_user['date_of_birth']?>" value="state.date" required> </vuejs-datepicker>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="berkas" class="form-label">Photo Santri</label> <br>
-                    <input type="file" class="form-control" accept="image/*" name="user_image" id="my-file">
-                </div>
-                <?php if (isset($data_user['user_image'])) : ?>
-                    <div style="width: 200px; height:100%; " class="mb-3">
-                        <img src="<?= base_url('avatar/' . $data_user['user_image']) ?>" class="img-fluid">
-                    </div>
-                <?php endif; ?>
-
-                <vuejs-datepicker :language="id" name="date_of_birth" input-class="form-control" placeholder="<?= !empty($data_user['date_of_birth']) ? $data_user['date_of_birth'] : '' ?>" value="state.date" required> </vuejs-datepicker>
+                <label for="tanggal_lahir">Tanggal Lahir</label>
+                        <input type="text" name="date_of_birth" value="<?= !empty($data_user['date_of_birth']) ? $data_user['date_of_birth'] : '' ?>" class="form-control datepicker" autocomplete="off"/>
+ 
 
                 <label for="gender">Jenis Kelamin</label>
                 <?php $options = [

@@ -43,7 +43,7 @@ class SekolahAsal extends BaseController
             'user_id'   => user_id(),
         ]);
           session()->setFlashdata('message','Sekolah asal telah di input');
-         return  redirect()->to('santri/create-sekolah-asal');
+         return  redirect()->to('santri/dashboard');
     }
 
     public function edit($id){
@@ -70,6 +70,6 @@ class SekolahAsal extends BaseController
             'user_id'   => user_id(),
         ]);
           session()->setFlashdata('message','Sekolah asal telah update');
-        return  redirect()->to('santri/edit-sekolah-asal/'.$id);
+        return  redirect()->to('santri/dashboard');
     }
 }
