@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Siakad</title>
     <!-- Custom styles for this template-->
     <link href="<?= base_url(); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>/assets/css/dashboard.css" rel="stylesheet">
     <link href="<?= base_url(); ?>/assets/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>/assets/css/dataTables.dateTime.min.css" rel="stylesheet">
+
     <script src="<?= base_url(); ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?= base_url(); ?>/assets/js/bouncer.polyfills.min.js"></script>
     <script src="<?= base_url(); ?>/assets/js/jquery-3.6.0.min.js"></script>
+
     <script src="<?= base_url(); ?>/assets/js/jquery.dataTables.min.js"></script>
     <script src="<?= base_url(); ?>/assets/js/dataTables.bootstrap5.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/dataTables.buttons.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/buttons.html5.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/jszip.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/moment.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/dataTables.dateTime.min.js"></script>
+
     <script src="<?= base_url(); ?>/assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/axios.min.js"></script>
     
 
 <body class="bg-light">
@@ -60,7 +70,7 @@
   $(document).ready(function(){
     $('.datepicker').datepicker({
       format: 'dd/mm/yyyy',
-      startDate: '-3d'
+     // startDate: '-3d'
     });
  })
   

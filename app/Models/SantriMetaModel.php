@@ -4,20 +4,20 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UndanganModel extends Model
+class SantriMetaModel extends Model
 {
     protected $DBGroup              = 'default';
-    protected $table                = 'undangan';
+    protected $table                = 'santri_meta';
     protected $primaryKey           = 'id';
     protected $useAutoIncrement     = true;
     protected $insertID             = 0;
     protected $returnType           = 'array';
     protected $useSoftDeletes       = false;
     protected $protectFields        = true;
-    protected $allowedFields        = ['no_surat', 'hari_tanggal','jam', 'tempat','jenis_undangan', 'keterangan'];
+    protected $allowedFields        = ['user_id','undangan_id'];
 
     // Dates
-    protected $useTimestamps        = true;
+    protected $useTimestamps        = false;
     protected $dateFormat           = 'datetime';
     protected $createdField         = 'created_at';
     protected $updatedField         = 'updated_at';

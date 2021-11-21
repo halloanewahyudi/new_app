@@ -19,14 +19,12 @@
             <?php
             $no=1;
             foreach ($data_santri as $key => $ds) :
-               $num = $ds['id'];
-                $noreg = sprintf("%04d", $num);
-                $codereg = user()->registration_number;  
+
             ?>
                 <tr id="row_<?= $ds['id'] ?>">
                     <td><?= $no ?></td>
                     <td><?= $ds['full_name'] ?></td>
-                    <td><?= $codereg, $noreg;?></td>
+                    <td><?= $ds['registration_number'] ;?></td>
                     <td><?= $ds['nisn'] ?></td>
                     <td><?= $ds['nik'] ?></td>
                     <td><?= $ds['educational_level'] ?></td>

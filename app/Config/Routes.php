@@ -134,13 +134,32 @@ $routes->get('konfirmasi/(:any)','Response::konfirmasi/$1');
  $routes->get('admin/dashboard', 'AdminDashboard::index');
  $routes->get('admin/users', 'AdminUsers::index');
  $routes->get('admin/santri', 'AdminSantri::index');
+ $routes->get('admin/santri-by-jenjang/(:any)', 'AdminSantri::show_by_jenjang/$1');
+ $routes->get('admin/detail-santri/(:any)', 'AdminSantri::detail_santri/$1');
+
  $routes->get('admin/pembayaran', 'AdminPembayaran::index');
+ $routes->get('admin/pembayaran-sdit', 'AdminPembayaran::sdit_bayar');
+ $routes->get('admin/pembayaran-smpit-putra', 'AdminPembayaran::smpit_putra_bayar');
+ $routes->get('admin/pembayaran-smpit-putri', 'AdminPembayaran::smpit_putri_bayar');
+ $routes->get('admin/pembayaran-smait-putra', 'AdminPembayaran::smait_putra_bayar');
+ $routes->get('admin/pembayaran-smait-putri', 'AdminPembayaran::smait_putri_bayar');
+ $routes->get('admin/pembayaran-takhosus', 'AdminPembayaran::takhosus_bayar');
+ $routes->get('admin/pembayaran-detail/(:any)', 'AdminPembayaran::view/$1');
+ 
+ $routes->add('admin/valid-pembayaran/(:any)', 'AdminPembayaran::valid_pembayaran/$1');
+
  $routes->get('admin/berkas', 'AdminBerkas::index');
 
+ $routes->get('admin/undangan', 'AdminUndangan::index');
+ $routes->get('admin/detail-undangan/(:any)', 'AdminUndangan::view/$1');
  $routes->get('admin/create-undangan', 'AdminUndangan::create');
  $routes->get('admin/create-undangan-action', 'AdminUndangan::create_action');
  $routes->get('admin/edit-undangan/(:any)','AdminUndangan::edit/$1');
- $routes->add('admin/edit-undangan-action/(:any)','Pembayaran::edit_action/$1');
+ $routes->add('admin/edit-undangan-action/(:any)','AdminUndangan::edit_action/$1');
+
+ $routes->add('admin/undang-santri','AdminUndangan::undang_santri');
+ $routes->get('admin/batal-ngundang/(:any)','AdminUndangan::batal_ngundang/$1');
+
 
 
 

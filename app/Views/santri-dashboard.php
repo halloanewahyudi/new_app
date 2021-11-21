@@ -76,6 +76,7 @@
                     </div>
                     <?php else: ?>
                         <h4 class="text-muted">Data Belum ter input</h4>
+                        <br> <a href="<?= base_url('steping/sekolah-asal')?>">Silakan isi data sekolah asal</a>
                     <?php endif; ?>
                 </div>
             </div><!--  end card -->
@@ -88,13 +89,13 @@
                         <div>
                             <span>Ayah</span><br>
                             <span>
-                            <?= !empty($data_ayah->nama) ? $data_ayah->nama : 'Belum terinput' ?>
+                            <?= !empty($data_ayah->nama) ? $data_ayah->nama : 'Belum terinput <br> <a href="'.base_url('steping/ayah').'">Silakan isi data Ayah</a>' ?>
                             </span>
                         </div>
                         <div>
                             <span>Ibu</span><br>
                             <span>
-                            <?= !empty($data_ibu->nama) ? $data_ibu->nama : 'Belum terinput' ?>
+                            <?= !empty($data_ibu->nama) ? $data_ibu->nama : 'Belum terinput <br> <a href="'.base_url('steping/ibu').'">Silakan isi data Ibu</a>' ?>
                         </span>
                         </div>
                     </div>
