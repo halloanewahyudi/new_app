@@ -10,6 +10,7 @@ class Home extends BaseController
   public function __construct()
   {
     $this->db = \Config\Database::connect();
+    $this->config = config('Auth');
     helper(['auth']);
   }
   public function index()
@@ -23,6 +24,10 @@ class Home extends BaseController
       }
     }
     return view('welcome_message');
+  }
+
+  public function login(){
+    return view('auth/login',['config' => $this->config]);
   }
 
   public function register_sdit()

@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('login', 'Home::login');
 $routes->get('register-admin', 'Home::register_admin');
 $routes->get('register-sdit', 'Home::register_sdit');
 $routes->get('register-smpit-putra', 'Home::register_smpit_putra');
