@@ -156,6 +156,7 @@ $routes->get('konfirmasi/(:any)','Response::konfirmasi/$1');
  $routes->get('admin/create-undangan-action', 'AdminUndangan::create_action');
  $routes->get('admin/edit-undangan/(:any)','AdminUndangan::edit/$1');
  $routes->add('admin/edit-undangan-action/(:any)','AdminUndangan::edit_action/$1');
+ $routes->get('admin/delete-undangan/(:any)','AdminUndangan::delete/$1');
 
  $routes->add('admin/undang-santri','AdminUndangan::undang_santri');
  $routes->get('admin/batal-ngundang/(:any)','AdminUndangan::batal_ngundang/$1');

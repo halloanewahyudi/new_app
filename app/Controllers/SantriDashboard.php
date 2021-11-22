@@ -30,6 +30,7 @@ class SantriDashboard extends BaseController
                 'data_kartu_keluarga' => $this->kartu_keluarga(),
                 'data_sertifikat_hafalan' => $this->sertifikat_hafalan(),
                 'data_surat_kesehatan' => $this->surat_kesehatan(),
+                'data_db'=> $this->db,
             ];
     
             return view('santri-dashboard', $d);

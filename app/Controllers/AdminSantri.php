@@ -32,6 +32,7 @@ class AdminSantri extends BaseController
             $d = [
                 'judul' => 'Calon Santri',
                 'data_santri' => $santri_model,
+                 'data_db' =>$this->db,
             ];
             return view('admin/sudah-daftar', $d);
         } else {

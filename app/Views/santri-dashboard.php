@@ -8,6 +8,48 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <?php endif; ?>
+<?php $santri_meta =  $data_db->table('santri_meta')
+  ->where('user_id',user_id())
+  ->get()
+  ->getFirstRow();
+  if(isset($santri_meta)):
+    $undangan = $data_db->table('undangan')
+    ->where('id',$santri_meta->undangan_id)
+    ->get()
+    ->getFirstRow();
+    
+?>
+<div class="undangan">
+<div class="card bg-opacity-25 bg-primary">
+    <div class="card-body">
+        <div class="badge btn btn-primary btn-sm  badge-pill">Undangan</div>
+        <h4 class="card-title"><?= $undangan->jenis_undangan ?></h4>
+        <table>
+            <tr>
+                <td>Tanggal</td>
+                <td>:</td>
+                <td><?= $undangan->hari_tanggal; ?></td>
+            </tr>
+            <tr>
+                <td>Waktu</td>
+                <td>:</td>
+                <td><?= $undangan->jam; ?></td>
+            </tr>
+            <tr>
+                <td>Tempat</td>
+                <td>:</td>
+                <td><?= $undangan->tempat; ?></td>
+            </tr>
+            <tr>
+                <td>Keterangan</td>
+                <td>:</td>
+                <td><?= $undangan->keterangan; ?></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+<?php endif; ?>
     <div class="row">
         <div class="col-lg-4">
             <div class="card">

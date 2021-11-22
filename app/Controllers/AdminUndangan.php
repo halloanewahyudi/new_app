@@ -35,7 +35,6 @@ class AdminUndangan extends BaseController
         ->select('users.id as uid')
         ->join('pembayaran','pembayaran.user_id = users.id')
         ->where('users.status',null)->get()->getResultArray();
-
         $d =[
             'judul'=>'Undangan',
             'data_user'=>$user,
@@ -86,6 +85,11 @@ class AdminUndangan extends BaseController
         ]);
           session()->setFlashdata('message','Undangan telah di update');
          return  redirect()->to('admin/undangan');
+    }
+
+    public function delete($id){
+        $this->undangan_model->delete($id);
+        return  redirect()->to('admin/undangan');
     }
 
     public function undang_santri(){
